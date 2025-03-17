@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<html>
     <head>
         <link rel="stylesheet" href="style.css"/>
         <meta charset="UTF-8">
@@ -26,10 +25,12 @@
         src="https://www.csgodatabase.com/images/containers/webp/Chroma_2_Case.webp"  
     />  
 
-    <button id="open-case-button">Open Case</button>
+<!-- Add the button -->
+<button id="open-case-button">Open Case</button>
 
-    <div class="slider-container">
-        <div class="slider">        
+<!-- Slider container -->
+<div class="slider-container">
+  <div class="slider">   
             <div class="skin">
                 <img src="https://cdn.csgoskins.gg/public/uih/items/aHR0cHM6Ly9jZG4uY3Nnb3NraW5zLmdnL3B1YmxpYy9pbWFnZXMvYnVja2V0cy9lY29uL2RlZmF1bHRfZ2VuZXJhdGVkL3dlYXBvbl9tNGExX3NpbGVuY2VyX2N1X200YTFfaHlwZXJfYmVhc3RfbGlnaHQuZmUxZWVjZGVkNmJlNDM2YmRkZDk5YWUxMjRiMTQ4MTQ0OTM1ODg5Yy5wbmc-/auto/auto/85/notrim/7b221a13e4bf5f6fe7fe0b658bbece52.webp" alt="Skin 1"></div>
             <div class="skin">
@@ -60,65 +61,11 @@
                 <img src="https://cdn.csgoskins.gg/public/uih/items/aHR0cHM6Ly9jZG4uY3Nnb3NraW5zLmdnL3B1YmxpYy9pbWFnZXMvYnVja2V0cy9lY29uL2RlZmF1bHRfZ2VuZXJhdGVkL3dlYXBvbl9zYXdlZG9mZl9jdV9zYXdlZG9mZl9vcmlnYW1pX2xpZ2h0LjFjNjRjYWRiYjcxNzYzNTE0ODhmNmUwMGY3NjAxMDYxZjU1M2E0ZGIucG5n/auto/auto/85/notrim/6896079934e825c5e274485d517262e7.webp" alt="Skin 14"></div>
             <div class="skin">
                 <img src="https://cdn.csgoskins.gg/public/uih/items/aHR0cHM6Ly9jZG4uY3Nnb3NraW5zLmdnL3B1YmxpYy9pbWFnZXMvYnVja2V0cy9lY29uL2RlZmF1bHRfZ2VuZXJhdGVkL3dlYXBvbl9uZWdldl9hbV9uZWdldl9nbG9yeV9saWdodC44ZDQ5NGY4ZjcyOTVlODc3MzZhOTg5YmU4MWI4NTM3ODY0YzRiZWVhLnBuZw--/auto/auto/85/notrim/8b0a92e9ec689e7915b6cbedc38ecfa1.webp" alt="Skin 15"></div>
-          </div>
-        </div>         
-   
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-              // Get the slider and button elements
-              const slider = document.querySelector('.slider');
-              const openCaseButton = document.getElementById('open-case-button');
-        
-              // Debugging: Verify elements
-              console.log("Slider element:", slider);
-              console.log("Button element:", openCaseButton);
-        
-              // Function to start the scroll animation
-              function startScrollAnimation() {
-                console.log("Animation started!"); // Debugging: Check if the function is called
-                const skins = document.querySelectorAll('.skin'); // Get all skin elements
-                const totalSkins = skins.length; // Total number of skins
-                const scrollSpeed = 50; // Initial scroll speed (pixels per frame)
-                const slowdownFactor = 0.95; // How much the speed decreases each frame
-                const minSpeed = 1; // Minimum speed before stopping
-        
-                let currentSpeed = scrollSpeed; // Current scroll speed
-                let scrollPosition = 0; // Current scroll position
-        
-                // Function to animate the scroll
-                function animate() {
-                  scrollPosition += currentSpeed; // Update scroll position
-                  slider.scrollLeft = scrollPosition; // Apply scroll position
-        
-                  // Gradually slow down
-                  currentSpeed *= slowdownFactor;
-        
-                  // Stop when the speed is too low
-                  if (currentSpeed > minSpeed) {
-                    requestAnimationFrame(animate); // Continue the animation
-                  } else {
-                    // Finalize the scroll to a random skin
-                    const randomSkinIndex = Math.floor(Math.random() * totalSkins);
-                    const randomSkin = skins[randomSkinIndex];
-                    const skinOffset = randomSkin.offsetLeft; // Get the position of the random skin
-        
-                    // Smoothly scroll to the random skin
-                    slider.scrollTo({
-                      left: skinOffset,
-                      behavior: 'smooth'
-                    });
-                  }
-                }
-        
-                // Start the animation
-                animate();
-              }
-        
-              // Add a click event listener to the button
-              openCaseButton.addEventListener('click', startScrollAnimation);
-            });
-          </script>
-        </body>
-        </html>
+     </div>
+ </div>         
+    
+ <script src="script.js"></script>
+    </body>
+    </html>
       
         
