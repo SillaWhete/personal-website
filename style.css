@@ -12,29 +12,60 @@ body {
 }
 
 .slider-container {
-    width: 100%;
-    overflow: hidden; /* Hide overflow to create the sliding effect */
+    width: 100%; /* Full width of the container */
+    overflow: hidden; /* Hide overflow */
     position: relative;
   }
 
+  .slider-container {
+  position: relative; /* Required for the pseudo-element */
+}
+
+.slider-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%; /* Position the line in the middle */
+  transform: translateX(-50%);
+  width: 2px; /* Line width */
+  height: 100%; /* Full height of the container */
+  background-color: red; /* Line color */
+  z-index: 1; /* Ensure the line is above the skins */
+}
   .slider {
     display: flex; /* Arrange skins horizontally */
-    transition: transform 0.5s ease-in-out; /* Smooth sliding animation */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    scroll-behavior: smooth; /* Smooth scrolling */
+    width: max-content; /* Allow the slider to expand horizontally */
+    padding: 10px 0; /* Add some padding */
   }
 
+  #open-case-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px; /* Space below the button */
+  }
+  
+  #open-case-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
   .skin {
-    all: initial;
     min-width: 250px; /* Width of each skin */
     height: 200px; /* Height of each skin */
-    background-color: #333; /* Placeholder background */
+    background-color: #333; /* Fallback background */
     margin: 10px; /* Space between skins */
     border: 2px solid #555; /* Border for visibility */
     border-radius: 8px; /* Rounded corners */
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
-    color: #aaa;
+    overflow: hidden; /* Ensure the image doesn't overflow the container */
+    flex-shrink: 0; /* Prevent skins from shrinking */
   }
 
   .skin:hover {
@@ -43,7 +74,6 @@ body {
   }
 
   .skin img {
-    all: initial;
     width: 100%; /* Make the image fill the container */
     height: 100%; /* Make the image fill the container */
     object-fit: cover; /* Ensure the image covers the container without distortion */
@@ -56,6 +86,7 @@ body {
     object-fit: cover;
     border-radius: 6px;
   }
+  
 .center {
     text-align: center;
 }
