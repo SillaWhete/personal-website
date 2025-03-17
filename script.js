@@ -1,61 +1,25 @@
-document.getElementById("open-case-button").addEventListener("click", startCaseOpening);
 
-let slider = document.querySelector(".slider");
-let skins = document.querySelectorAll(".skin");
-let totalSkins = skins.length;
-let isSliding = false;
-let slideInterval;
-let randomIndex;
+window.onload = function() {
+    console.log("Page loaded and script running!");
+};document.addEventListener("DOMContentLoaded", function () {
+    console.log("Script loaded!"); // Debugging
 
-function startCaseOpening() {
-    // If already sliding, return to prevent multiple clicks
-    if (isSliding) return;
+    const slider = document.querySelector(".slider");
+    if (!slider) {
+        console.error("Slider element not found!"); // Debugging
+        return; // Stop if slider doesn't exist
+    }
 
-    isSliding = true;
-    randomIndex = getRandomIndex(totalSkins);
+    const openCaseButton = document.getElementById("open-case-button");
+    if (!openCaseButton) {
+        console.error("Button element not found!");
+        return;
+    }
 
-    // Enable smooth scrolling animation for the skins
-    slider.style.transition = "transform 3s ease-out";
+    function startScrollAnimation() {
+        console.log("Animation started!"); // Debugging
+        slider.scrollLeft += 100; // Move slider to see if it works
+    }
 
-    // Start the slider moving
-    slideInterval = setInterval(() => {
-        let currentTransform = getSliderTransform();
-        let newTransform = currentTransform + 5; // Increase the scroll position to move the slider
-        slider.style.transform = `translateX(-${newTransform}px)`;
-    }, 10); // This makes the slider move by 5px every 10ms
-
-    // Stop the slider after a random time
-    let randomTime = getRandomTime(); // Random time between 3-5 seconds for realism
-    setTimeout(stopCaseOpening, randomTime);
-}
-
-function stopCaseOpening() {
-    // Stop the slider animation by clearing the interval and transitioning to the final position
-    clearInterval(slideInterval);
-    slider.style.transition = "transform 1s ease-out"; // Smooth out the final stop
-    slider.style.transform = `translateX(-${getFinalTransform()}px)`; // Stop the slider at a random skin
-
-    // Disable further sliding
-    setTimeout(() => {
-        isSliding = false;
-    }, 1000); // Allow clicking again after animation
-}
-
-function getSliderTransform() {
-    const style = window.getComputedStyle(slider);
-    const matrix = new WebKitCSSMatrix(style.transform);
-    return matrix.m41 || 0; // Get the current transform X value
-}
-
-function getRandomTime() {
-    return Math.random() * (5000 - 3000) + 3000; // Random time between 3-5 seconds
-}
-
-function getRandomIndex(total) {
-    return Math.floor(Math.random() * total); // Random index of skins
-}
-
-function getFinalTransform() {
-    let skinWidth = skins[0].offsetWidth + 20; // Calculate width of a skin including margin
-    return randomIndex * skinWidth; // Scroll to the selected skin index
-}
+    openCaseButton.addEventListener("click", startScrollAnimation);
+});
