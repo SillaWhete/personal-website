@@ -11,6 +11,10 @@ body {
   
 }
 
+div.format > div{
+  padding-left: 10;
+}
+
 .slider-container {
     width: 100%; /* Full width of the container */
     overflow: hidden; /* Hide overflow */
